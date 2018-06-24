@@ -1,0 +1,40 @@
+smartHome.o: smartHome.cpp ../src/hub/hub.h ../src/setup/setup.h \
+ ../src/setup/configurator/include/configurator.h ../src/include/config.h \
+ ../src/setup/configurator/include/reader.h \
+ ../src/setup/configurator/include/parser.h \
+ ../src/setup/agentFactory/agentFactory.h \
+ ../src/setup/agentFactory/agentFactory.h ../src/include/iRegistrar.h \
+ ../src/include/iPublisher.h ../src/include/iAgent.h
+reader.o: ../src/setup/configurator/reader/reader.cpp \
+ ../src/setup/configurator/include/reader.h
+parser.o: ../src/setup/configurator/parser/parser.cpp \
+ ../src/setup/configurator/include/parser.h
+configurator.o: ../src/setup/configurator/configurator.cpp \
+ ../src/setup/configurator/include/configurator.h ../src/include/config.h \
+ ../src/setup/configurator/include/reader.h \
+ ../src/setup/configurator/include/parser.h
+agentFactory.o: ../src/setup/agentFactory/agentFactory.cpp \
+ ../src/setup/agentFactory/agentFactory.h ../src/include/iRegistrar.h \
+ ../src/include/iPublisher.h ../src/include/iAgent.h \
+ ../src/include/config.h
+hub.o: ../src/hub/hub.cpp ../src/hub/hub.h \
+ ../src/hub/publisher/publisher.h ../src/include/iPublisher.h \
+ ../lib/waitableQueue/waitableQueue.h ../src/hub/registrar/registrar.h \
+ ../src/include/iRegistrar.h ../src/hub/distributer/distributer.h
+distributer.o: ../src/hub/distributer/distributer.cpp \
+ ../src/hub/distributer/distributer.h ../src/hub/publisher/publisher.h \
+ ../src/include/iPublisher.h ../lib/waitableQueue/waitableQueue.h \
+ ../src/hub/registrar/registrar.h ../src/include/iRegistrar.h \
+ ../src/include/iEventListener.h ../src/include/event.h
+registrar.o: ../src/hub/registrar/registrar.cpp \
+ ../src/hub/registrar/registrar.h ../src/include/iRegistrar.h
+publisher.o: ../src/hub/publisher/publisher.cpp \
+ ../src/hub/publisher/publisher.h ../src/include/iPublisher.h \
+ ../lib/waitableQueue/waitableQueue.h
+setup.o: ../src/setup/setup.cpp ../src/setup/setup.h \
+ ../src/setup/configurator/include/configurator.h ../src/include/config.h \
+ ../src/setup/configurator/include/reader.h \
+ ../src/setup/configurator/include/parser.h \
+ ../src/setup/agentFactory/agentFactory.h \
+ ../src/setup/agentFactory/agentFactory.h ../src/include/iRegistrar.h \
+ ../src/include/iPublisher.h ../src/include/iAgent.h

@@ -1,0 +1,49 @@
+#Project Files
+TARGET=main.out
+SRCS=$(wildcard ./*.cpp) 
+OBJS=$(SRCS:.cpp=.o)
+
+#Compilation Flags
+
+INC_PATH=$(addprefix -I, ../include/ ./)
+
+CC=g++
+
+CXXFLAGS=-g -Wall -std=c++11 $(INC_PATH) 
+
+LDFLAGS= -pthread -lmysqlcppconn
+
+.PHONY: clean run gdb
+
+$(TARGET): depends $(OBJS)
+	$(CC) $(OBJS) -o $(TARGET) -lpthread -ldl
+	
+clean:
+	rm -f $(OBJS) $(TARGET) *.out *.o *.so depends
+	@clear
+
+run: $(TARGET)
+	@clear
+	./$(TARGET) 
+	
+gdb: $(TARGET)
+	gdb ./$(TARGET)
+
+depends:
+	$(CC) -MM $(SRCS) $(INC_PATH) > depends
+	
+#include depends   
+#g++ -fPIC -shared ./LG_fire_sens_1.cpp -o ./LG_fire_sens_1.so -I../include
+
+#nm -D -C LG_ctrl_1.so
+
+so: LG_ctrl_1.so LG_ctrl_2.so LG_fire_sens_1.so LG_fire_sens_2.so
+
+H.so: HVACController.cpp HVACEvent.cpp 
+	$(CC) -fPIC -shared $^ -o $@ $(INC_PATH)
+	
+LG_ctrl_2.so: LG_ctrl_2.cpp event.cpp
+	$(CC) -fPIC -shared $^ -o $@ $(INC_PATH) 
+
+
+#g++ -fPIC -shared ./HVACController.cpp ./HVACEvent.cpp -o ./HVAC.so -I../include -I./
