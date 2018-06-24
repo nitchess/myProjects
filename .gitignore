@@ -1,0 +1,13 @@
+*.o
+*.out
+*~
+*.zip
+*.tar
+*.gz
+*.bz2
+*.rar
+*.gch
+core
+*.swp
+*.out.dSYM
+*.DS_Store
