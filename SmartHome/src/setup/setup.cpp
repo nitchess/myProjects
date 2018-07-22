@@ -7,7 +7,7 @@
 #include <iostream>
 #include "setup.h"
 
-using namespace std;
+// using namespace std;
 
 Setup::Setup(const std::string _configPath, const std::string _soPath, iRegistrar * const _reg, 
     iPublisher * const _pub): m_reg(_reg), m_pub(_pub), m_cnfgPath(_configPath), m_soPath(_soPath),
